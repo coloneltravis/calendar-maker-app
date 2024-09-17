@@ -1,0 +1,42 @@
+
+
+div.calendar { margin-left:30px; font-family:Arial, helvetica, sans-serif; width:900px; color: black;}
+
+div.month { margin:10px; margin-top:50px; margin-bottom:50px;}
+
+div.monthname { font-size:30pt; font-weight:bold; }
+
+div.pageBreak {clear:both;}
+
+div.artwork { display:block; width:98%; height: 500px; border:1px solid black; margin-bottom:50px;}
+
+.week {width:100%;}
+.weekday-name { background-color:#900;  border: 1px solid #900; color:#fff; float:left; width:14%; text-align:center; font-size:12pt;  font-weight:bold;}
+.weekday-name p {padding:2px;}
+.weekday.weekday-name {border-top: none;}
+
+.weekday {float:left; width:14%; height:100px; border: 1px solid lightgray;}
+.weekday-day { font-weight:bold; }
+.weekday-othermonth {background-color:#eee; color:#aaa; }
+.weekday-day span,.weekday-othermonth span { font-size:16pt; font-weight:bold; margin:2px 2px; }
+.weekday-day .ev { float:right; width:60%; padding-top:2px; font-size:8pt;  font-weight:100; font-style:italic;}
+.monthname p {margin:0px;}
+
+div.pageBreak {clear:both;}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+
+  .footer {
+    page-break-after: always;
+    border:none;
+  }
+}

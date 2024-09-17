@@ -1,0 +1,122 @@
+[
+    {
+        "eventDate": "20240101",
+        "title": "New Year’s Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20240329",
+        "title": "Good Friday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20240401",
+        "title": "Easter Monday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20240506",
+        "title": "Early May bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20240527",
+        "title": "Spring bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20240826",
+        "title": "Summer bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20241225",
+        "title": "Christmas Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20241226",
+        "title": "Boxing Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20250101",
+        "title": "New Year’s Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20250418",
+        "title": "Good Friday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20250421",
+        "title": "Easter Monday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20250505",
+        "title": "Early May bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20250526",
+        "title": "Spring bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "2025-08-25",
+        "title": "Summer bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "2025-12-25",
+        "title": "Christmas Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20251226",
+        "title": "Boxing Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "2026-01-01",
+        "title": "New Year’s Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20260403",
+        "title": "Good Friday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20260406",
+        "title": "Easter Monday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20260504",
+        "title": "Early May bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20260525",
+        "title": "Spring bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20260831",
+        "title": "Summer bank holiday",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20261225",
+        "title": "Christmas Day",
+        "type": "Public holiday"
+    },
+    {
+        "eventDate": "20261228",
+        "title": "Boxing Day",
+        "type": "Public holiday"
+    }
+]

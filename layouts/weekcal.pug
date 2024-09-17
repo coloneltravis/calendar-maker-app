@@ -1,0 +1,138 @@
+extends calendar-month.pug
+
+block content
+    - year = currentYear
+    mixin lookupEvent(mm, daydate)
+        if events
+            div.ev
+                each event in events
+                    if event.eventDate && event.title && event.type
+                        if (event.type == "Birthday" || event.type == "Anniversary")
+                            if (daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2)))
+                                div= event.title
+                        else
+                            if parseInt(event.eventDate.substr(0,4)) == year
+                                if (daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2)))
+                                    div= event.title
+                    
+    mixin monthName(yy, mm)
+        case mm
+            when 1
+                span.mmmm January
+                span.yyyy #{yy}
+            when 2
+                span.mmmm February
+                span.yyyy #{yy}
+            when 3
+                span.mmmm March
+                span.yyyy #{yy}
+            when 4
+                span.mmmm April
+                span.yyyy #{yy}
+            when 5
+                span.mmmm May
+                span.yyyy #{yy}
+            when 6
+                span.mmmm June
+                span.yyyy #{yy}
+            when 7
+                span.mmmm July
+                span.yyyy #{yy}
+            when 8
+                span.mmmm August
+                span.yyyy #{yy}
+            when 9
+                span.mmmm September
+                span.yyyy #{yy}
+            when 10
+                span.mmmm October
+                span.yyyy #{yy}
+            when 11
+                span.mmmm November
+                span.yyyy #{yy}
+            when 12
+                span.mmmm December
+                span.yyyy #{yy}
+
+
+    mixin dayName(dd)
+        case dd
+            when 1
+                p Sunday
+            when 2
+                p Monday
+            when 3
+                p Tuesday
+            when 4
+                p Wednesday
+            when 5
+                p Thursday
+            when 6
+                p Friday
+            when 7
+                p Saturday
+
+
+    mixin dayNumber(dd, wd)
+        case wd
+            when 1
+                span= dd 
+            when 2
+                span= dd
+            when 3
+                span= dd
+            when 4
+                span= dd
+            when 5
+                span= dd
+            when 6
+                span= dd
+            when 7
+                span= dd
+
+
+    div.calendar
+        each month in [0,1,2,3,4,5,6,7,8,9,10,11].slice(startMonth-1, parseInt(startMonth-1) + parseInt(monthCount))
+            div.month
+
+                - var firstDay = new Date(year, month, 1)
+                - var lastDay = new Date(year, month+1, 0)
+                - var weekDay = firstDay.getDay()
+                - var dayms = (1000*60*60*24)
+                - var weekStart = new Date();
+                - weekStart.setTime(firstDay.getTime()-(dayms*weekDay))
+
+                div.monthname
+                    +monthName(year, month+1)
+
+                - var thisDay = new Date()
+                - thisDay.setTime(weekStart.getTime())
+                div.week
+                    each weekday in [1,2,3,4,5,6,7]
+                        div.weekday-name
+                            +dayName(weekday)
+
+                while (thisDay.getTime() <= lastDay.getTime())
+                    div.week
+                        each weekday in [1,2,3,4,5,6,7]
+
+                            - var weekdayClass = 'weekday-day'
+                            - var nonMonth = (month != thisDay.getMonth())
+                            if nonMonth
+                                - weekdayClass = 'weekday-othermonth'
+
+                            if weekday == 1 || weekday == 7
+                                - weekdayClass = 'weekend'
+
+                            div(class=weekdayClass).weekday
+                                +dayNumber(thisDay.getDate(), thisDay.getDay()+1)
+                                if !nonMonth
+                                    +lookupEvent(thisDay.getMonth()+1, thisDay.getDate())
+
+                            - thisDay.setTime(thisDay.getTime()+dayms)
+                
+            div.footer
+
+            div.pageBreak
+
+

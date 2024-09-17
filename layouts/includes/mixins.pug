@@ -1,0 +1,62 @@
+mixin age(birthDate)
+    - var today = new Date();
+    - var birthDate = new Date(dateString);
+    - var age = today.getFullYear() - birthDate.getFullYear();
+    - var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
+        age--;
+
+
+mixin dayName(dd)
+    case dd
+        when 1
+            p Sunday
+        when 2
+            p Monday
+        when 3
+            p Tuesday
+        when 4
+            p Wednesday
+        when 5
+            p Thursday
+        when 6
+            p Friday
+        when 7
+            p Saturday 
+
+
+mixin shortDayName(dd)
+    case dd
+        when 1
+            span Su
+        when 2
+            span M
+        when 3
+            span Tu
+        when 4
+            span W
+        when 5
+            span Th
+        when 6
+            span F
+        when 7
+            span Sa
+
+
+mixin dayNumber(dd, wd)
+    case wd
+        when 1
+            span.weekend= dd 
+        when 2
+            span= dd
+        when 3
+            span= dd
+        when 4
+            span= dd
+        when 5
+            span= dd
+        when 6
+            span= dd
+        when 7
+            span.weekend= dd
+

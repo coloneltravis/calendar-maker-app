@@ -1,0 +1,190 @@
+extends calendar-strip.pug
+
+block content
+    - year = currentYear
+    - var dd = 1
+
+    mixin day(mm, daydate)
+        - var thisDate = new Date(year, mm-1, daydate)
+        div.day
+            div.dd
+                +dayNumber(daydate, thisDate.getDay()+1)
+            div.ddd
+                +dayName(thisDate.getDay()+1)
+            if events
+                div.ev
+                    each event in events
+                        if event.eventDate && event.title && event.type
+                            if (event.type == "Birthday" || event.type == "Anniversary")
+                                if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
+                                    div= event.title
+                            else
+                                if parseInt(event.eventDate.substr(0,4)) == year
+                                    if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
+                                        div= event.title
+
+    mixin age(birthDate)
+        - var today = new Date();
+        - var birthDate = new Date(dateString);
+        - var age = today.getFullYear() - birthDate.getFullYear();
+        - var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
+            age--;
+
+    mixin monthName(yy, mm)
+        case mm
+            when 1
+                span.mmmm January
+                span.yyyy #{yy}
+            when 2
+                span.mmmm February
+                span.yyyy #{yy}
+            when 3
+                span.mmmm March
+                span.yyyy #{yy}
+            when 4
+                span.mmmm April
+                span.yyyy #{yy}
+            when 5
+                span.mmmm May
+                span.yyyy #{yy}
+            when 6
+                span.mmmm June
+                span.yyyy #{yy}
+            when 7
+                span.mmmm July
+                span.yyyy #{yy}
+            when 8
+                span.mmmm August
+                span.yyyy #{yy}
+            when 9
+                span.mmmm September
+                span.yyyy #{yy}
+            when 10
+                span.mmmm October
+                span.yyyy #{yy}
+            when 11
+                span.mmmm November
+                span.yyyy #{yy}
+            when 12
+                span.mmmm December
+                span.yyyy #{yy}
+
+
+    mixin dayName(dd)
+        case dd
+            when 1
+                span Sun
+            when 2
+                span Mon
+            when 3
+                span Tue
+            when 4
+                span Wed
+            when 5
+                span Thu
+            when 6
+                span Fri
+            when 7
+                span Sat
+
+    mixin shortDayName(dd)
+        case dd
+            when 1
+                span Su
+            when 2
+                span M
+            when 3
+                span Tu
+            when 4
+                span W
+            when 5
+                span Th
+            when 6
+                span F
+            when 7
+                span Sa
+
+
+    mixin dayNumber(dd, wd)
+        case wd
+            when 1
+                span.weekend= dd 
+            when 2
+                span= dd
+            when 3
+                span= dd
+            when 4
+                span= dd
+            when 5
+                span= dd
+            when 6
+                span= dd
+            when 7
+                span.weekend= dd
+
+
+    mixin previewMonth(yy, mm)
+        - var year = mm < 1 ? yy-1 : yy;
+        - var month = mm < 1 ? 12 : mm;
+        - var year = mm > 12 ? yy+1 : year;
+        - var month = mm > 12 ? 1 : month;
+        - var firstDay = new Date(year, month-1, 1)
+        - var lastDay = new Date(year, month, 0)
+        - var weekDay = firstDay.getDay()
+        - var dayms = (1000*60*60*24)
+        - var weekStart = new Date()
+        - weekStart.setTime(firstDay.getTime()-(dayms*weekDay))
+
+        div.previewmonth
+            - var thisDay = new Date()
+            - thisDay.setTime(weekStart.getTime())
+            div.month-grid
+                div.smallmonthname
+                    +monthName(year, month)
+
+                div.week
+                    each weekday in [1,2,3,4,5,6,7]
+                        div.weekday.weekday-name
+                            +shortDayName(weekday)
+
+                while (thisDay.getTime() <= lastDay.getTime())
+                    div.week
+                        each weekday in [1,2,3,4,5,6,7]
+                            - var weekdayClass = 'weekday weekday-day'
+                            - var nonMonth = (month-1 != thisDay.getMonth())
+                            if nonMonth
+                                - weekdayClass = 'weekday weekday-othermonth'
+
+                            div(class=weekdayClass)
+                                =thisDay.getDate()
+
+                            - thisDay.setTime(thisDay.getTime()+dayms)
+
+    - function daysinmonth(mm) { return new Date(year, mm, 0).getDate(); }
+
+
+    div.calendar
+        each month in [1,2,3,4,5,6,7,8,9,10,11,12].slice(startMonth-1, parseInt(startMonth-1) + parseInt(monthCount))
+            div.monthname
+                +monthName(year, month)
+
+            div.month
+                - dd = 1
+                div.left
+                    while (dd <= 16)
+                        +day(month, dd++)
+                div.right
+                    while (dd <= daysinmonth(month))
+                        +day(month, dd++)
+
+            div.footer
+                div.preview-wrapper
+                    +previewMonth(year, month-1)
+                    +previewMonth(year, month)
+                    +previewMonth(year, month+1)
+
+            div.pageBreak
+
+
+

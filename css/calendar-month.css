@@ -1,0 +1,48 @@
+
+
+div.calendar { margin-left:30px; font-family:Arial, helvetica, sans-serif; width:1600px; color: black;}
+
+div.month { margin:10px; margin-top:50px; margin-bottom:50px;}
+
+div.monthname { font-size:30pt; font-weight:bold; }
+div.monthname { margin-left:40px; font-size:50pt; font-weight:bold; padding:10px;  width:100%;}
+
+.monthname > .mmmm { color:#a00;}
+.monthname > .yyyy { color: #a00; margin-left:0.5em; }
+
+div.pageBreak {clear:both;}
+
+div.artwork { display:block; width:98%; height: 500px; border:1px solid black; margin-bottom:50px;}
+
+
+.week {width:100%;}
+.weekday-name { background-color:#900;  border: 1px solid #900; color:#fff; float:left; width:14%; text-align:center; font-size:16pt;  font-weight:bold;}
+.weekday-name p {padding:2px;}
+.weekday.weekday-name {border-top: none;}
+
+.weekday {float:left; width:14%; height:150px; border: 1px solid lightgray;}
+.weekday-day { font-weight:bold; }
+.weekday-othermonth {background-color:#eee; color:#aaa; }
+.weekend {background-color: #d66f74;}
+.weekday-day span,.weekday-othermonth span,.weekend span { font-size:70pt; font-weight:bold; padding: 4px 4px; color:#555;}
+.weekday-day .ev { width:95%; padding-top:2px; font-size:14pt;  font-weight:100; font-style:italic;}
+.monthname span {margin:0px;}
+
+div.pageBreak {clear:both;}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  html, body {
+    width: 297mm;
+    height: 210m;
+  }
+
+  .footer {
+    page-break-after: always;
+    border:none;
+  }
+}

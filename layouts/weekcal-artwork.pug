@@ -1,0 +1,107 @@
+extends calendar-month.pug
+
+block content
+    - year = currentYear
+    mixin lookupEvent(mm, daydate)
+        if events
+            div.ev
+                each event in events
+                    if event.eventDate && event.title && event.type
+                        if (event.type == "Birthday" || event.type == "Anniversary")
+                            if (daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2)))
+                                div= event.title
+                        else
+                            if parseInt(event.eventDate.substr(0,4)) == year
+                                if (daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2)))
+                                    div= event.title
+                    
+    mixin monthName(yy, mm)
+        case mm
+            when 1
+                p January #{yy}
+            when 2
+                p February #{yy}
+            when 3
+                p March #{yy}
+            when 4
+                p April #{yy}
+            when 5
+                p May #{yy}
+            when 6
+                p June #{yy}
+            when 7
+                p July #{yy}
+            when 8
+                p August #{yy}
+            when 9
+                p September #{yy}
+            when 10
+                p October #{yy}
+            when 11
+                p November #{yy}
+            when 12
+                p December #{yy}
+
+
+    mixin dayName(dd)
+        case dd
+            when 1
+                p Sunday
+            when 2
+                p Monday
+            when 3
+                p Tuesday
+            when 4
+                p Wednesday
+            when 5
+                p Thursday
+            when 6
+                p Friday
+            when 7
+                p Saturday
+
+
+    div.calendar
+        each month in [0,1,2,3,4,5,6,7,8,9,10,11].slice(startMonth-1, parseInt(startMonth-1) + parseInt(monthCount))
+            div.month
+
+                div.artwork
+
+                - var firstDay = new Date(year, month, 1)
+                - var lastDay = new Date(year, month+1, 0)
+                - var weekDay = firstDay.getDay()
+                - var dayms = (1000*60*60*24)
+                - var weekStart = new Date();
+                - weekStart.setTime(firstDay.getTime()-(dayms*weekDay))
+
+                div.monthname
+                    +monthName(year, month+1)
+
+                - var thisDay = new Date()
+                - thisDay.setTime(weekStart.getTime())
+                div.week
+                    each weekday in [1,2,3,4,5,6,7]
+                        div.weekday-name
+                            +dayName(weekday)
+
+                while (thisDay.getTime() <= lastDay.getTime())
+                    div.week
+                        each weekday in [1,2,3,4,5,6,7]
+
+                            - var weekdayClass = 'weekday-day'
+                            - var nonMonth = (month != thisDay.getMonth())
+                            if nonMonth
+                                - weekdayClass = 'weekday-othermonth'
+
+                            div(class=weekdayClass).weekday
+                                span= thisDay.getDate()
+                                if !nonMonth
+                                    +lookupEvent(thisDay.getMonth()+1, thisDay.getDate())
+
+                            - thisDay.setTime(thisDay.getTime()+dayms)
+                
+            div.footer
+
+            div.pageBreak
+
+
