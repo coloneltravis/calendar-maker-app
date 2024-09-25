@@ -95,12 +95,12 @@ block content
         each month in [0,1,2,3,4,5,6,7,8,9,10,11].slice(startMonth-1, parseInt(startMonth-1) + parseInt(monthCount))
             div.month
 
-                - var firstDay = new Date(year, month, 1)
-                - var lastDay = new Date(year, month+1, 0)
+                - var firstDay = new Date(year, month, 1, 12)
+                - var lastDay = new Date(year, month+1, 0, 12)
                 - var weekDay = firstDay.getDay()
                 - var dayms = (1000*60*60*24)
                 - var weekStart = new Date();
-                - weekStart.setTime(firstDay.getTime()-(dayms*weekDay)+(1000*7200))
+                - weekStart.setTime(firstDay.getTime()-(dayms*weekDay))
 
                 div.monthname
                     +monthName(year, month+1)

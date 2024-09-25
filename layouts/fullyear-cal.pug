@@ -39,29 +39,29 @@ block content
     mixin monthName(yy, mm)
         case mm
             when 1
-                span.mmmm January
+                span.mmmm JANUARY
             when 2
-                span.mmmm February
+                span.mmmm FEBRUARY
             when 3
-                span.mmmm March
+                span.mmmm MARCH
             when 4
-                span.mmmm April
+                span.mmmm APRIL
             when 5
-                span.mmmm May
+                span.mmmm MAY
             when 6
-                span.mmmm June
+                span.mmmm JUNE
             when 7
-                span.mmmm July
+                span.mmmm JULY
             when 8
-                span.mmmm August
+                span.mmmm AUGUST
             when 9
-                span.mmmm September
+                span.mmmm SEPTEMBER
             when 10
-                span.mmmm October
+                span.mmmm OCTOBER
             when 11
-                span.mmmm November
+                span.mmmm NOVEMBER
             when 12
-                span.mmmm December
+                span.mmmm DECEMBER
 
 
     mixin dayName(dd)
@@ -122,10 +122,10 @@ block content
         - var month = mm < 1 ? 12 : mm;
         - var year = mm > 12 ? yy+1 : year;
         - var month = mm > 12 ? 1 : month;
-        - var firstDay = new Date(year, month-1, 1)
-        - var lastDay = new Date(year, month, 0)
+        - var firstDay = new Date(year, month-1, 1, 12)
+        - var lastDay = new Date(year, month, 0, 12)
         - var weekDay = firstDay.getDay()
-        - var dayms = (1000*60*60*24)
+        - var dayms = (1000*60*60*24) //+(1000*7200)
         - var weekStart = new Date()
         - weekStart.setTime(firstDay.getTime()-(dayms*weekDay))
 
@@ -136,7 +136,7 @@ block content
                 div.smallmonthname
                     +monthName(year, month)
 
-                div.week
+                div.week2
                     each weekday in [1,2,3,4,5,6,7]
                         div.weekday.weekday-name
                             +shortDayName(weekday)
@@ -148,6 +148,9 @@ block content
                             - var nonMonth = (month-1 != thisDay.getMonth())
                             if nonMonth
                                 - weekdayClass = 'weekday weekday-othermonth'
+
+                            if weekday == 1 || weekday == 7
+                                - weekdayClass = 'weekday weekend'
 
                             div(class=weekdayClass)
                                 =thisDay.getDate()

@@ -40,7 +40,7 @@ const wkhtmltopdf = require('wkhtmltopdf');
             var fn = pug.compileFile(`./layouts/${calType.layout}.pug`, {events: events});
             var data = fn({ events: events, currentYear: year, startMonth: month, monthCount: count });
 
-            //fs.writeFileSync("./calendar.html", data);
+            fs.writeFileSync("./calendar.html", data);
 
             var pageOptions = {
                 pageSize: 'A4',
@@ -49,8 +49,6 @@ const wkhtmltopdf = require('wkhtmltopdf');
                 userStyleSheet: `css/${calType.stylesheet}.css`,
                 enableLocalFileAccess: true,
                 printMediaType: true,
-                pageWidth: '210mm',
-                pageHeight: '297mm',
                 marginLeft: '0mm',
                 marginRight: '0mm'
             };

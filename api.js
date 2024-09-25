@@ -144,14 +144,17 @@ app.use(function(req, res, next){
 
 function validateParams(caltype, month = 1, count = 1 )
 {
-  if (parseInt(caltype) < 0 || parseInt(caltype) > 2) {
+  if (parseInt(caltype) < 0 || parseInt(caltype) >  3) {
     throw new Error('Invalid calendar type');
   }
-  else if (parseInt(month) < 1 || parseInt(month) > 12) {
-    throw new Error('Incorrect month');
-  }
-  else if (parseInt(count) < 1 || parseInt(count) > 12) {
-    throw new Error('Invalid count');
+
+  if (caltype == 0 || caltype || 1) {
+    if (parseInt(month) < 1 || parseInt(month) > 12) {
+      throw new Error('Incorrect month');
+    }
+    else if (parseInt(count) < 1 || parseInt(count) > 12) {
+      throw new Error('Invalid count');
+    }  
   }
 }
 
