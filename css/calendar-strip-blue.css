@@ -1,7 +1,7 @@
 
 
   div.calendar {font-family:Arial, helvetica, sans-serif; background-color: #00a; margin-top:20px;}
-  div.monthname { margin-left:20px; font-size:50pt; font-weight:bold;  width:100%;}
+  div.monthname { margin-left:20px; font-size:50pt; font-weight:bold;}
 
   div.month {border:none; margin:0 10px 0 10px; background-color:#fff; border-radius:7px;}
 
@@ -16,10 +16,10 @@
 
   .dd > span {vertical-align:middle;}
 
-  .monthname > .mmmm { color:#6f98d6; width:50%; padding: 4px;}
-  .monthname > .yyyy { color: #6f98d6; font-size:100px; margin-left:100mm; width:50%; padding: 4px;}
+  .monthname > .mmmm { width:75%; color:#6f98d6; width:75%; padding: 4px;}
+  .monthname > .yyyy { width: 25%;  color: #6f98d6; font-size:100px; margin-left:100mm; width:25%; padding: 4px;}
 
-.monthname> .spacer {width:200mm;}
+
 
   .weekend {color: #b00;}
 

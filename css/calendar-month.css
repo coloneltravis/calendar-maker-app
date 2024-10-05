@@ -26,6 +26,7 @@ div.artwork { display:block; width:98%; height:500px; border:1px solid black; ma
 div.pageBreak {clear:both;}
 
 
+
 .footer {
   page-break-after: always;
   border:none;

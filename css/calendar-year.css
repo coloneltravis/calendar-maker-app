@@ -20,6 +20,8 @@ html, body {background-color:#005; }
 
   div.pageBreak {clear:both;}
 
+  .birthday {background-color:#faa;}
+  .event {background-color:#ffa;}
 
     .footer {
       page-break-after: always;

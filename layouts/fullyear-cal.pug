@@ -4,29 +4,29 @@ block content
     - year = currentYear
     - var dd = 1
 
-    mixin day(mm, daydate)
+    mixin lookupEvent(mm, daydate)
         - var thisDate = new Date(year, mm-1, daydate)
-        div.day
-            div.dd
-                +dayNumber(daydate, thisDate.getDay()+1)
-            div.ddd
-                +dayName(thisDate.getDay()+1)
-            if events
-                div.ev
-                    each event in events
-                        if event.eventDate && event.title
-                            if event.type == 'Birthday'
-                                if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
-                                    div= event.title
+        - var eventClass = ''
+        if !events
+            +dayNumber(daydate, thisDate.getDay()+1)
+        else
+            each event in events
+                if event.eventDate && event.title
+                    if (event.type == 'Birthday' || event.type == 'Anniversary')
+                        if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
+                            - eventClass = 'birthday'
 
-                            else if event.type == ''
-                                if parseInt(event.eventDate.substr(0,4)) == year
-                                    if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
-                                        div= event.title
-                            else
-                                if parseInt(event.eventDate.substr(0,4)) == year
-                                    if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
-                                        div= event.title
+                    else if event.type == ''
+                        if parseInt(event.eventDate.substr(0,4)) == year
+                            if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
+                                - eventClass = 'event'
+                    else
+                        if parseInt(event.eventDate.substr(0,4)) == year
+                            if daydate == parseInt(event.eventDate.substr(6,2)) && mm == parseInt(event.eventDate.substr(4,2))
+                                - eventClass = 'event'
+
+            span(class=eventClass)
+                +dayNumber(daydate, thisDate.getDay()+1)
 
     mixin age(birthDate)
         - var today = new Date();
@@ -145,19 +145,16 @@ block content
                     div.week
                         each weekday in [1,2,3,4,5,6,7]
                             - var weekdayClass = 'weekday weekday-day'
-                            - var nonMonth = (month-1 != thisDay.getMonth())
-                            if nonMonth
-                                - weekdayClass = 'weekday weekday-othermonth'
+                            - var nonMonth = (mm != thisDay.getMonth()+1)
 
                             if weekday == 1 || weekday == 7
                                 - weekdayClass = 'weekday weekend'
 
                             div(class=weekdayClass)
-                                =thisDay.getDate()
+                                if (!nonMonth)
+                                    +lookupEvent(month, thisDay.getDate())
 
                             - thisDay.setTime(thisDay.getTime()+dayms)
-
-    - function daysinmonth(mm) { return new Date(year, mm, 0).getDate(); }
 
 
     div.calendar
