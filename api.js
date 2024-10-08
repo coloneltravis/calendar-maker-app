@@ -65,7 +65,6 @@ app.get('/calendar/:caltype/year/:year/month/:month/count/:mcount', (req, res, n
 
 app.post('/calendar', jsonParser, function (req, res, next) {
 
-
   try {
     validateParams(req.body.caltype, req.body.month, req.body.count);
 

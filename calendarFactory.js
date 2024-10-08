@@ -40,7 +40,7 @@ const wkhtmltopdf = require('wkhtmltopdf');
             var fn = pug.compileFile(`./layouts/${calType.layout}.pug`, {events: events});
             var data = fn({ events: events, currentYear: year, startMonth: month, monthCount: count });
 
-            fs.writeFileSync("./calendar.html", data);
+            //fs.writeFileSync("./calendar.html", data);
 
             var pageOptions = {
                 pageSize: 'A4',

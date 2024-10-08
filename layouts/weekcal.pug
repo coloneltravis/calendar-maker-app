@@ -107,6 +107,11 @@ block content
 
                 - var thisDay = new Date()
                 - thisDay.setTime(weekStart.getTime())
+
+                - var weekCount = 'five-week-month'
+                if (weekDay > 4 && lastDay.getDate() > 29)
+                    - weekCount = 'six-week-month'
+
                 div.week
                     each weekday in [1,2,3,4,5,6,7]
                         div.weekday-name
@@ -116,13 +121,13 @@ block content
                     div.week
                         each weekday in [1,2,3,4,5,6,7]
 
-                            - var weekdayClass = 'weekday-day'
+                            - var weekdayClass = 'weekday-day ' + weekCount
                             - var nonMonth = (month != thisDay.getMonth())
                             if nonMonth
-                                - weekdayClass = 'weekday-othermonth'
+                                - weekdayClass = 'weekday-othermonth ' + weekCount
 
                             if weekday == 1 || weekday == 7
-                                - weekdayClass = 'weekend'
+                                - weekdayClass = 'weekend ' + weekCount
 
                             div(class=weekdayClass).weekday
                                 +dayNumber(thisDay.getDate(), thisDay.getDay()+1)

@@ -1,7 +1,7 @@
 
 div.calendar { margin-top:2px; font-family:Arial, helvetica, sans-serif; color:black; }
 
-div.month { margin-top:0px; }
+div.month { margin-top:50px; }
 
 div.monthname { margin-top:0px; font-size:40pt; font-weight:bold; margin:4px; }
 
@@ -15,13 +15,15 @@ div.artwork { display:block; width:98%; height:500px; border:1px solid black; ma
 .weekday-name p {padding:2px;}
 .weekday.weekday-name {border-top: none;}
 
-.weekday {float:left; width:52mm; height:37mm; border: 1px solid lightgray;}
+.weekday {float:left; width:52mm; border: 1px solid lightgray;}
 .weekday-day { font-weight:bold; }
 .weekday-othermonth {background-color:#eee; color:#aaa; }
 .weekend {background-color:#e6bec0;}
-.weekday-day span,.weekday-othermonth span,.weekend span { font-size:60pt; font-weight:bold; padding:2px 2px; color:#555;}
-.weekday-day .ev { width:98%; padding-top:2px; font-size:12pt;  font-weight:100; font-style:italic;}
+.weekday-day span,.weekday-othermonth span,.weekend span { font-size:54pt; font-weight:bold; padding:2px 2px; color:#555;}
+.weekday-day .ev { width:98%; font-size:11pt; font-weight:100; font-style:italic;}
 .monthname span {margin:0px;}
+.five-week-month { height:37mm;}
+.six-week-month { height:30mm;}
 
 div.pageBreak {clear:both;}
 
