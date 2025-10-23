@@ -1,0 +1,8 @@
+// Theme partial: sets CSS variables under a theme class for runtime switching
+.calendar--theme--strip-red {
+  --calendar-primary: #c62828;
+  --calendar-accent: #ef5350;
+  --calendar-background: #fffaf9;
+  --calendar-text: #111827;
+  --calendar-border: #ffd6d6;
+}

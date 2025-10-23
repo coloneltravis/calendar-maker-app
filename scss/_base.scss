@@ -1,0 +1,26 @@
+// Base reset and calendar container shared styles
+
+:root {
+  /* default CSS custom properties used by components */
+  --calendar-primary: #0b66d1;
+  --calendar-accent: #0f9be8;
+  --calendar-background: #ffffff;
+  --calendar-text: #1b1b1b;
+  --calendar-border: #e0e0e0;
+  --calendar-cell-padding: 8px;
+}
+
+body {
+  font-family: $font-family;
+  color: var(--calendar-text);
+  background: var(--calendar-background);
+}
+
+.calendar {
+  box-sizing: border-box;
+  background: var(--calendar-background);
+  border-radius: $border-radius;
+  color: var(--calendar-text);
+  border: 1px solid var(--calendar-border);
+  padding: 12px;
+}

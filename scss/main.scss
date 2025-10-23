@@ -1,0 +1,25 @@
+// Entry point: import shared partials and theme files.
+// Compile this to css/main.css (or produce separate theme CSSs if desired).
+
+@import 'variables';
+@import 'mixins';
+@import 'base';
+@import 'components/month';
+@import 'components/year';
+@import 'components/artwork';
+
+/* Import theme classes that can be toggled at runtime */
+@import 'themes/strip-blue';
+@import 'themes/strip-red';
+
+/* Optionally generate utility theme classes from the $calendar-themes map.
+   This demonstrates using a Sass map for compile-time theme class generation. */
+@each $name, $map in $calendar-themes {
+  $class: ".calendar--theme--#{$name}";
+  #{$class} {
+    --calendar-primary: map-get($map, primary);
+    --calendar-accent: map-get($map, accent);
+    --calendar-background: map-get($map, background);
+    --calendar-text: map-get($map, text);
+  }
+}

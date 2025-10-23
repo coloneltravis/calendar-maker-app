@@ -1,0 +1,36 @@
+// Styles common to month layouts (convert contents of calendar-month.css here)
+.calendar--month {
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    .title {
+      font-weight: 700;
+      color: var(--calendar-primary);
+    }
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+
+    .day {
+      padding: var(--calendar-cell-padding);
+      text-align: center;
+      border: 1px solid transparent;
+      border-radius: 4px;
+
+      &.today {
+        background: mix(var(--calendar-primary), var(--calendar-background), 90%);
+        border-color: var(--calendar-accent);
+      }
+
+      &.other-month {
+        opacity: 0.5;
+      }
+    }
+  }
+}

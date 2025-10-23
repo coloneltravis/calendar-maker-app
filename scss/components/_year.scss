@@ -1,0 +1,19 @@
+// Styles common to year layouts (convert calendar-year.css here)
+.calendar--year {
+  .month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    .mini-month {
+      padding: 6px;
+      background: lighten(var(--calendar-background), 2%);
+      border-radius: 6px;
+
+      .month-name {
+        font-weight: 600;
+        color: var(--calendar-primary);
+      }
+    }
+  }
+}

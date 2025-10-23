@@ -1,0 +1,14 @@
+// For artwork-heavy month view (convert calendar-month-artwork.css here)
+.calendar--artwork {
+  .hero {
+    height: 160px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .calendar-grid .day {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,22 @@
+// Shared variables and default CSS custom properties.
+// Use these values as fallbacks; theme partials will override CSS variables.
+$font-family: "Helvetica Neue", Arial, sans-serif;
+$cell-padding: 8px;
+$border-radius: 4px;
+$border-color: #e0e0e0;
+
+// A Sass map with theme values if you prefer compile-time themes
+$calendar-themes: (
+  "strip-blue": (
+    primary: #0b66d1,
+    accent: #0f9be8,
+    background: #ffffff,
+    text: #1b1b1b
+  ),
+  "strip-red": (
+    primary: #c62828,
+    accent: #ef5350,
+    background: #ffffff,
+    text: #1b1b1b
+  )
+);

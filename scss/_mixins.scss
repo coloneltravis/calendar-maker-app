@@ -1,0 +1,14 @@
+// Small helper mixins
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}@import 'calendar-strip/_variables';
